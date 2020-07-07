@@ -74,6 +74,7 @@ export default {
     loadLorem() {
       return $.ajax(`./fixtures/${this.fixture}.json`)
         .done((res) => {
+          console.log(res);
           this.fixtures = JSON.parse(res);
         });
     },
