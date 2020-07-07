@@ -16,6 +16,7 @@
     "css-loader": "^3.6.0",
     "jquery": "^3.5.1",
     "sass-loader": "^9.0.1",
+    "unique-random-array": "^2.0.0",
     "vinyl-named-with-path": "^1.0.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.3",

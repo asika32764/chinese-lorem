@@ -14,7 +14,7 @@ fusion.task('css', function () {
   // Watch end
 
   // Compile Start
-  fusion.sass('src/scss/**/*.scss', 'dist/app.css');
+  fusion.sass('src/scss/app.scss', 'dist/app.css');
   // Compile end
 });
 
