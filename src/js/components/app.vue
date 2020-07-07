@@ -23,11 +23,28 @@
 
         <div class="card">
           <div class="card-body">
-            <h3 class="card-title">
-              {{ title }}
-            </h3>
+            <div class="card-title d-flex justify-content-between">
+              <h3 class="" ref="title">
+                {{ title }}
+              </h3>
+              <div class="ml-2">
+                <button type="button" class="btn btn-sm btn-outline-primary"
+                  data-task="copy"
+                  data-target="title">
+                  複製標題
+                </button>
+              </div>
 
-            <div class="article-content">
+              <div class="ml-auto">
+                <button type="button" class="btn btn-sm btn-outline-primary"
+                  data-task="copy"
+                  data-target="text">
+                  複製全文
+                </button>
+              </div>
+            </div>
+
+            <div class="article-content" ref="text">
               {{ text }}
             </div>
           </div>
@@ -39,6 +56,7 @@
 
 <script>
 import $ from 'jquery';
+import Clipboard from 'clipboard';
 import uniqueRandomArray from 'unique-random-array';
 import { BFormRadioGroup, BFormGroup } from 'bootstrap-vue';
 
@@ -64,6 +82,13 @@ export default {
     this.loadLorem().then(() => {
       this.reloadLorem();
     });
+
+    new Clipboard('[data-task=copy]', {
+      text: (trigger) => {
+        const field = trigger.dataset.target;
+        return this[field];
+      }
+    });
   },
   methods: {
     reloadLorem() {
@@ -87,6 +112,11 @@ export default {
       }
 
       return t.join('，');
+    },
+
+    copy(e, field) {
+      const clip = new Clipboard(e.target);
+      clip
     }
   },
   watch: {
