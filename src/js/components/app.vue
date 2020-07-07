@@ -74,7 +74,7 @@ export default {
     loadLorem() {
       return $.ajax(`./fixtures/${this.fixture}.json`)
         .done((res) => {
-          this.fixtures = typeof res === 'string' ? res : JSON.parse(res);
+          this.fixtures = typeof res === 'string' ? JSON.parse(res) : res;
         });
     },
 
